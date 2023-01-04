@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); display: block; --darkreader-inline-bgcolor: #131414; --darkreader-inline-bgimage: none; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" data-darkreader-inline-bgcolor="" data-darkreader-inline-bgimage="">
+<path d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#9f0013" stroke="none" style="--darkreader-inline-fill: #60040d; --darkreader-inline-stroke: none;" data-darkreader-inline-fill="" data-darkreader-inline-stroke="">
+  <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" keyTimes="0;1" values="0 50 51;360 50 51"></animateTransform>
+</path>
+</svg>
