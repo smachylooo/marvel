@@ -36,10 +36,10 @@ const App = () => {
                 </div>
                 <img className="bg-decoration" src={decoration} alt="vision"/>
             </main> */}
-            <main>
+            <section className="comics">
                 <AppBanner/>
                 <ComicsList/>
-            </main>
+            </section>
         </div>
     )
     
