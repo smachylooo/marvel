@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import useMarvelService from '../../services/MarvelService';
+import { Link } from 'react-router-dom';
 
+import useMarvelService from '../../services/MarvelService';
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/errorMessage";
-import Skeleton from "../skeleton/Skeleton";
 import './comicsList.scss';
 
 const ComicsList = (props) => {
@@ -33,11 +33,11 @@ const ComicsList = (props) => {
         return comicsList.map((item, i) => {
             return (
                 <li className="comics__item" key={i}>
-                    <a href="#">
+                    <Link to={`/comics/${item.id}`}>
                         <img src={item.thumbnail} alt={item.title} className="comics__item-img"/>
                         <div className="comics__item-name">{item.title}</div>
                         <div className="comics__item-price">{item.price}</div>
-                    </a>
+                    </Link>
                 </li>
             )
         })
@@ -46,7 +46,6 @@ const ComicsList = (props) => {
     const items = renderItems();
     const errorMessage = error ? <ErrorMessage/> : null; 
     const spinner = loading && !newItemLoading ? <Spinner/> : null; 
-
 
     return (
         <div className="comics__list">

@@ -8,7 +8,6 @@ import ErrorMessage from "../errorMessage/errorMessage";
 import Skeleton from "../skeleton/Skeleton";
 
 const CharInfo = (props) => {
-
     const [char, setChar] = useState(null);
 
     const {loading, error, getCharacter, clearError} = useMarvelService(); 
@@ -16,7 +15,6 @@ const CharInfo = (props) => {
     useEffect(() => {
         updateChar();
     }, [props.charId])
-
 
     const updateChar = () => {
         const {charId} = props;
@@ -44,8 +42,8 @@ const CharInfo = (props) => {
             {spinner}    
             {content}    
         </div>
-    )
-}
+    );
+};
 
 const View = ({char}) => {
     const {name, description, thumbnail, homepage, wiki, comics} = char;
