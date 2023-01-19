@@ -23,7 +23,6 @@ const ComicsList = (props) => {
         getAllComics(offset)
             .then(onComicsLoaded)
     }
-
     const onComicsLoaded = (newComicsList) => {
         setComics(comicsList => [...comicsList, ...newComicsList]);
         setNewItemLoading(false);
