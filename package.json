@@ -12,13 +12,10 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.1.0",
     "react-scripts": "^5.0.1",
-<<<<<<< HEAD
     "web-vitals": "^1.0.1",
-    "yup": "^0.32.11"
-=======
+    "yup": "^0.32.11",
     "react-transition-group": "^4.4.5",
     "web-vitals": "^1.0.1"
->>>>>>> 981a57384635f9285defadb1717cf83c96d4434e
   },
   "scripts": {
     "start": "react-scripts start",

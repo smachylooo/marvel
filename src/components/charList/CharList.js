@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import useMarvelService from '../../services/MarvelService';
 import Spinner from "../spinner/Spinner";
-import ErrorMessage from "../errorMessage/errorMessage";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 import './charList.scss';
 
 const CharList = (props) => {

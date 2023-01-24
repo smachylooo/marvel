@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import useMarvelService from '../../services/MarvelService';
 import Spinner from "../spinner/Spinner";
-import ErrorMessage from "../errorMessage/errorMessage";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 import './comicsList.scss';
 
 const ComicsList = (props) => {
