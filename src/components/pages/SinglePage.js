@@ -14,6 +14,9 @@ const SinglePage = ({Component, dataType}) => {
         useEffect(() => {
             updateData()
         }, [id])
+        // console.log(id)
+        // console.log(Component)
+        // console.log(dataType)
 
         const updateData = () => {
             clearError();
@@ -30,6 +33,7 @@ const SinglePage = ({Component, dataType}) => {
         const onDataLoaded = (data) => {
             setData(data);
         }
+        console.log(id);
 
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;

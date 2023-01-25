@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes, Outlet} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import AppHeader from "../appHeader/AppHeader";
@@ -10,26 +10,36 @@ const MainPage = lazy(() => import('../pages/MainPage'));
 const ComicsPage = lazy(() => import('../pages/ComicsPage'));
 const SingleComicPage = lazy(() => import('../pages/singleComicLayout/SingleComicLayout'));
 const SingleCharPage = lazy(() => import('../pages/singleCharacterLayout/SingleCharacterLayout'))
+const SinglePage = lazy(() => import('../pages/SinglePage'))
 
 const App = () => { 
 
     return (
         <Router>
             <div className="app">
-                <Suspense fallback={<Spinner/>}>
-                    <AppHeader/>
-                    <Routes>
-                        <Route path="/" element={<MainPage/>}/>
-                        <Route path="/comics" element={<ComicsPage/>}/>
-                        <Route path="/comics/:comicId" element={<SingleComicPage/>} dataType='comic'/>
-                        <Route path="/characters/:charId" element={<SingleCharPage/>} dataType='character'/>
-
-                        <Route path="*" element={<Page404/>}/>
-                    </Routes>
-                </Suspense>
+                <AppHeader/>
+                <main>
+                    <Suspense fallback={<Spinner/>}>
+                        <Switch>
+                            <Route exact path="/">
+                                <MainPage/>
+                            </Route>
+                            <Route exact path="/comics">
+                                <ComicsPage/>
+                            </Route>
+                            <Route exact path="/comics/:id">
+                                <SinglePage Component={SingleComicPage} dataType='comic'/>
+                            </Route>
+                            <Route exact path="/characters/:id">
+                                <SinglePage Component={SingleCharPage} dataType='character'/>
+                            </Route>
+                            <Route path="*">
+                                <Page404/>
+                            </Route>
+                        </Switch>
+                    </Suspense>
+                </main>
             </div>
-            <Outlet/>
-
         </Router>
      )
     
