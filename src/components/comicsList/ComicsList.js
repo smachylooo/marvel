@@ -18,16 +18,12 @@ const ComicsList = (props) => {
         switch (process) {
             case 'waiting':
                 return <Spinner/>;
-                break;
             case 'loading':
                 return newItemLoading ? <Component/> : <Spinner/>;
-                break;
             case 'confirmed': 
                 return <Component/>;
-                break;
             case 'error':
                 return <ErrorMessage/>;
-                break;
             default:
                 throw new Error('Unexpected process state');
         }
@@ -52,7 +48,7 @@ const ComicsList = (props) => {
     function renderItems () {
         return comicsList.map((item, i) => {
             return (
-                <li className="comics__item" key={i}>
+                <li  className="comics__item" key={i}>
                     <Link to={`/comics/${item.id}`}>
                         <img src={item.thumbnail} alt={item.title} className="comics__item-img"/>
                         <div className="comics__item-name">{item.title}</div>

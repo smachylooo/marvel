@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 
 import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
-import setContent from '../../utils/setContent';
 
 import './charSearchForm.scss';
 
