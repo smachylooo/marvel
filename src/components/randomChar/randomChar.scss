@@ -3,6 +3,7 @@
 .randomchar {
     display: grid;
     grid-template-columns: repeat(2, 50%);
+    align-items: center;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
     &__block {
         padding: 40px 35px;
@@ -30,6 +31,11 @@
     &__descr {
         font-size: 14px;
         line-height: 18px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     &__btns {
         a:nth-child(1) {
@@ -59,4 +65,10 @@
         bottom: 14px;
         right: -37px;
     }
+}
+
+.randomchar__special{
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
 }
