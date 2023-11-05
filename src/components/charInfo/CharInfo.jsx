@@ -60,6 +60,7 @@ class CharInfo extends Component {
             .getOneCharacter(charId)
             .then(this.onCharLoaded)
             .catch(this.onError)
+            
     }
 
     render(){

@@ -13,7 +13,11 @@ class CharList extends Component {
     state = {
         chars: [],
         loading: true,
-        error: false
+        error: false,
+        newItemLOading: false,
+        offset: 210,
+        charEnded: false
+
     }
 
     marvelService = new MarvelService();
@@ -22,8 +26,29 @@ class CharList extends Component {
         this.updateChars();
     }
 
-    onCharsLoad=(chars)=>{
-        this.setState({chars, loading:false})
+    onRequest=(offset)=>{
+        this.onCharListLoading();
+        this.marvelService.getAllCharacter(offset)
+            .then(this.onCharsLoad)
+            .catch(this.onError)
+    }
+
+    onCharListLoading=()=>{
+        this.setState({
+            newItemLOading:true
+        })
+    }
+
+    onCharsLoad=(newchars)=>{
+        let ended = false;
+        if(newchars.length<9){
+            ended = true;
+        }
+
+        this.setState(({offset,chars})=>({
+            chars: [...chars, ...newchars], loading:false, newItemLOading: false, offset: offset +9, charEnded: ended
+        }))
+
     }
 
     onError=()=>{
@@ -38,7 +63,7 @@ class CharList extends Component {
     }
 
     render(){
-        const {chars, loading, error} = this.state;
+        const {chars, loading, error, offset, newItemLOading, charEnded} = this.state;
         const elements = chars.map(item=>{
             return(
                 <CharItem onCharSelected={this.props.onCharSelected} key={item.id} {...item} />
@@ -54,7 +79,11 @@ class CharList extends Component {
                     {spinner}
                     {content}
                 </ul>
-                <button className="button button__main button__long">
+                <button 
+                    className="button button__main button__long"
+                    disabled={newItemLOading}
+                    style={{'display': charEnded ? 'none': 'block'}}
+                    onClick={()=> this.onRequest(offset)}>
                     <div className="inner">load more</div>
                 </button>
             </div>
