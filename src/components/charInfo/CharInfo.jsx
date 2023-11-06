@@ -1,85 +1,63 @@
 import './charInfo.scss';
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import Spinner from '../spiner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
 
-class CharInfo extends Component {
+const CharInfo =(props)=> {
+    const [char, setChar] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
-    constructor(props){
-        super(props);
+    const marvelService = new MarvelService();
+
+    useEffect(()=>{
+        updateChar();
+    },[]);
+
+    useEffect(()=>{
+        updateChar();
+    },[props.charId]);
+
+    const onCharLoaded=(char)=>{
+        setChar(char);
+        setLoading(false);
+    };
+
+    const onCharLoading=()=>{
+        setLoading(true);
     }
 
-    state = {
-        char: null,
-        loading: false,
-        error: false
+    const onError=()=>{
+        setError(true);
+        setLoading(false);
     }
 
-    marvelService = new MarvelService();
-
-    componentDidMount(){
-        this.updateChar();
-    }
-
-    componentDidUpdate(prevProps,prevState){   
-        if(this.props.charId !== prevProps.charId){
-            this.updateChar();
-        }
-    }
-
-    onCharLoaded=(char)=>{
-        this.setState({
-            char,
-            loading: false
-        })
-    }
-
-    onCharLoading=()=>{
-        this.setState({
-            loading: true
-        })
-    }
-
-    onError=()=>{
-        this.setState({
-            loading:false,
-            error: true
-        })
-    }
-
-    updateChar=()=>{
-        const {charId} = this.props;
-        if(!charId){
+    const updateChar=()=>{
+        if(!props.charId){
             return;
         }
 
-        this.onCharLoading();
+        onCharLoading();
 
-        this.marvelService
-            .getOneCharacter(charId)
-            .then(this.onCharLoaded)
-            .catch(this.onError)
+        marvelService
+            .getOneCharacter(props.charId)
+            .then(onCharLoaded)
+            .catch(onError)
             
     }
-
-    render(){
-        const {char, loading, error} = this.state;
-
-        const skeleton = char || loading || error ? null : <Spinner/>
-
-        const errorMessage = error ? <ErrorMessage/> : null;
-        const spinner = loading ? <Spinner/>: null;
-        const content = !(loading||error || !char) ? <View char={char}/> : null;
-        return (
-            <div className="char__info">
-                {skeleton}
-                {errorMessage}
-                {spinner}
-                {content}
-            </div>
-        )
-    }
+    const skeleton = char || loading || error ? null : <Spinner/>
+    const errorMessage = error ? <ErrorMessage/> : null;
+    const spinner = loading ? <Spinner/>: null;
+    const content = !(loading||error || !char) ? <View char={char}/> : null;
+    return (
+        <div className="char__info">
+            {skeleton}
+            {errorMessage}
+            {spinner}
+            {content}
+        </div>
+    )
 }
 
 const View=({char})=>{
