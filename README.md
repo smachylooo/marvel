@@ -16,12 +16,19 @@ Marvel Universe Explorer is a web application that allows you to explore the vas
 
 ## Getting Started
 
-1. **Clone the Repository**: Start by cloning this repository to your local machine:
+1. **Start** by cloning this repository to your local machine:
    ```bash
    git clone https://github.com/your-username/marvel-universe-explorer.git
    ```
+2. **Install** all packages:
+
    ```
    npm install
+   ```
+
+3. \*\*Run the project on your local server:
+   ```
+   npm start
    ```
 
 ## Contact Information
