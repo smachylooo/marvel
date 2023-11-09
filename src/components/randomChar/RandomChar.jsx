@@ -6,13 +6,8 @@ import Spinner from '../spiner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
 const RandomChar=()=>{
-
-
     const [char, setChar] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-
-    const marvelService = new MarvelService();
+    const {loading, error, getOneCharacter} = MarvelService();
 
     useEffect(()=>{
         updateChar();
@@ -21,26 +16,17 @@ const RandomChar=()=>{
 
     const updateChar=()=>{
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-        marvelService
-            .getOneCharacter(id)
+        getOneCharacter(id)
             .then(onCharLoaded)
-            .catch(onError)
     }
 
     const onCharLoaded =(char)=>{
         setChar(char);
-        setLoading(false);
     }
 
-    const onError=()=>{
-        setError(true);
-        setLoading(false);        
-    }
 
     const onClickUpdate=()=>{
-        setChar({});
-        setError(false);
-        setLoading(true);   
+        setChar({});   
         updateChar();
     }
 

@@ -26,7 +26,7 @@ Marvel Universe Explorer is a web application that allows you to explore the vas
    npm install
    ```
 
-3. \*\*Run the project on your local server:
+3. **Run** the project on your local server:
    ```
    npm start
    ```

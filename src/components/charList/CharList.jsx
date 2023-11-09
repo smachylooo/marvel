@@ -8,28 +8,21 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import './charList.scss';
 const CharList =(props)=> {
     const [chars, setChars] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
     const [newItemLOading, setNewItemLoading] = useState(false);
     const [offset, setOffset] = useState(210);
     const [charEnded, setCharEnded] = useState(false);
 
-    const marvelService = new MarvelService();
+    const {loading, error, getAllCharacter} = MarvelService();
 
     useEffect(()=>{
-        onRequest();
+        onRequest(offset, true);
     },[]);
 
 
-    const onRequest=(offset)=>{
-        onCharListLoading();
-        marvelService.getAllCharacter(offset)
-            .then(onCharsLoad)
-            .catch(onError)
-    }
-
-    const onCharListLoading=()=>{
-        setNewItemLoading(true);
+    const onRequest=(offset, initial)=>{
+        initial ? setNewItemLoading(false) : setNewItemLoading(true);
+        getAllCharacter(offset)
+            .then(onCharsLoad);
     }
 
     const onCharsLoad=(newchars)=>{
@@ -39,16 +32,10 @@ const CharList =(props)=> {
         }
 
         setChars(chars=>[...chars, ...newchars]);
-        setLoading(loading=> false);
         setNewItemLoading(newItemLOading=> false);
         setOffset(offset=> offset+9);
         setCharEnded(charEnded=> ended);
 
-    }
-
-    const onError=()=>{
-        setLoading(loading=> false);
-        setError(true);
     }
 
     const elements = chars.map(item=>{
@@ -57,14 +44,13 @@ const CharList =(props)=> {
         ) 
     })
     const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading? <Spinner/>:null;
-    const content = !(loading||error) ? elements: null
+    const spinner = loading && !newItemLOading ? <Spinner/>:null;
     return (
         <div className="char__list">
             <ul className="char__grid">
                 {errorMessage}
                 {spinner}
-                {content}
+                {elements}
             </ul>
             <button 
                 className="button button__main button__long"
