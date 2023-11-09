@@ -1,6 +1,6 @@
 # Marvel Universe Explorer
 
-![Marvel Logo](marvel_logo.png)
+![Marvel Logo](./introduction/marvel_logo.png)
 
 Marvel Universe Explorer is a web application that allows you to explore the vast and exciting world of Marvel comics, characters, and more. Whether you're a die-hard Marvel fan or just getting started, this project is designed to help you discover your favorite characters and explore the rich history of Marvel comics.
 
@@ -17,15 +17,15 @@ Marvel Universe Explorer is a web application that allows you to explore the vas
 ## Getting Started
 
 1. **Clone the Repository**: Start by cloning this repository to your local machine:
-    ```bash
-    git clone https://github.com/your-username/marvel-universe-explorer.git
-    ```
-    ```
-    npm install
-    ```
+   ```bash
+   git clone https://github.com/your-username/marvel-universe-explorer.git
+   ```
+   ```
+   npm install
+   ```
 
 ## Contact Information
 
-[![Follow me on Twitter](twitter.png)](https://twitter.com/)
-[![Follow me on Linkedin](linkedin.jpg)](https://www.linkedin.com/in/bohdansmachylo/)
-[![Follow me on Instagram](instagram.png)](https://www.instagram.com/smachylo/)
+[![Follow me on Twitter](./introduction/icons8-twitter.svg)](https://twitter.com/)
+[![Follow me on Linkedin](./introduction/icons8-linkedin.svg)](https://www.linkedin.com/in/bohdansmachylo/)
+[![Follow me on Instagram](./introduction/icons8-instagram.svg)](https://www.instagram.com/smachylo/)

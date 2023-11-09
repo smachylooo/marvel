@@ -3,7 +3,6 @@ class MarvelService {
     url = 'https://gateway.marvel.com:443/v1/public/';
     _baseOffset = 210;
 
-    
     getRecurce= async (url)=>{
         let res = await fetch(url);
         if(!res.ok){

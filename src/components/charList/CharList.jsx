@@ -54,7 +54,7 @@ const CharList =(props)=> {
     const elements = chars.map(item=>{
         return(
             <CharItem onCharSelected={props.onCharSelected} key={item.id} {...item} />
-        )
+        ) 
     })
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading? <Spinner/>:null;
