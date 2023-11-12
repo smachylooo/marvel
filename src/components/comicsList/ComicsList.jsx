@@ -27,8 +27,8 @@ const ComicsList = (props) => {
         setOffset(offset=> offset+9)
     }
 
-    const elements = comics.map((el, index)=>{
-        return <ComicsItem key={el.id} {...el}/>
+    const elements = comics.map((el,index)=>{
+        return <ComicsItem key={index} {...el}/>
     });
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading && !newItemLoading ? <Spinner/>:null;
